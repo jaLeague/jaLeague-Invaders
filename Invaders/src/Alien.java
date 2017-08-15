@@ -8,6 +8,18 @@ public class Alien extends GameObject {
 
 	Alien(int aX, int aY, int aWidth, int aHeight) {
 		super(aX, aY, aWidth, aHeight);
+		isAlien = true;
+	}
+	public boolean isAlien() {
+		return isAlive();
+	}
+	public boolean scoreHit(GameObject o) {
+		if (isAlive() && (o.isProjectile || o.isRocket)) {
+			setAlive(false);
+			o.setAlive(false);
+			return true;
+		} else
+			return false;
 	}
 
 	void update() {

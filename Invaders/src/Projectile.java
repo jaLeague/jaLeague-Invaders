@@ -7,6 +7,20 @@ public class Projectile extends GameObject {
 
 	Projectile(int pX, int pY, int pHeight, int pWidth) {
 		super(pX, pY, pHeight, pWidth);
+		isProjectile = true;
+	}
+	
+	public boolean isProjectile() {
+		return isAlive();
+	}
+	
+	public boolean scoreHit(GameObject o) {
+		if (isAlive() && o.isAlien()) {
+			setAlive(false);
+			o.setAlive(false);
+			return true;
+		} else
+			return false;
 	}
 
 	void update() {
